@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Vi du AJAX trong AngularJS</title>
+<style>
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+<h2>Lịch Dạy Cô Huyền</h2>
+<div ng-app="" ng-controller="sinhvienController">
+<table>
+   <tr>
+      <th>Lớp</th>
+      <th>Thứ Hai</th>
+	    <th>Thứ Ba</th>
+      <th>Thứ Tư</th>
+      <th>Thứ Năm</th>
+      <th>Thứ Sáu</th>
+      <th>Thứ Bảy</th>
+      <th>Chủ Nhật</th>
+   </tr>
+   <tr ng-repeat="sinhvien in sinhvienk60">
+      <td>{{ sinhvien.TenNhom }}</td>
+      <td>{{ sinhvien.MSSV }}</td>
+	    <td>{{ sinhvien.Diemthi }}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+   </tr>
+</table>
+</div>
+<script>
+function sinhvienController($scope,$http) {
+var url="lichdaycohuyen.txt";
+   $http.get(url).success( function(response) {
+                           $scope.sinhvienk60 = response;
+                        });
+}
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</body>
+</html>
